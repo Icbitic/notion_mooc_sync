@@ -4,10 +4,11 @@ import jsonpath
 import datetime
 from datetime import timezone, timedelta
 
+URL = 'https://www.icourse163.org/web/j/courseBean.getLastLearnedMocTermDto.rpc?csrfKey=638557db0daf4b398fc1b2399414cd73';
+
 courses = [
     # C programming language
     {
-        'URL': 'https://www.icourse163.org/web/j/courseBean.getLastLearnedMocTermDto.rpc?csrfKey=638557db0daf4b398fc1b2399414cd73',
         'headers': {
             'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/119.0.0.0 Safari/537.36',
@@ -20,7 +21,6 @@ courses = [
 
     # Single-variable Calculus
     {
-        'URL': 'https://www.icourse163.org/web/j/courseBean.getLastLearnedMocTermDto.rpc?csrfKey=638557db0daf4b398fc1b2399414cd73',
         'headers': {
             'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/119.0.0.0 Safari/537.36',
@@ -33,7 +33,6 @@ courses = [
 
     # Linear Algebra
     {
-        'URL': 'https://www.icourse163.org/web/j/courseBean.getLastLearnedMocTermDto.rpc?csrfKey=638557db0daf4b398fc1b2399414cd73',
         'headers': {
             'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/119.0.0.0 Safari/537.36',
@@ -44,6 +43,7 @@ courses = [
         }
     }
 ]
+
 
 # Constants for uploading tasks
 token = 'secret_coAT2UhN6kZ8MBiJXap5Vsn9qEivkO6CNf4wCzGBdmD'
@@ -102,7 +102,7 @@ existing_tasks = readDatabase(databaseID, headers)
 tasks = []
 
 for course in courses:
-    page = requests.post(course['URL'], headers=course['headers'], data=course['data'])
+    page = requests.post(URL, headers=course['headers'], data=course['data'])
     dict = json.loads(page.text)
     tasks.extend(jsonpath.jsonpath(dict, '$..test'))
 
