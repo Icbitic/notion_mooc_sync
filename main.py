@@ -46,7 +46,7 @@ courses = [
 
 
 # Constants for uploading tasks
-token = 'secret_coAT2UhN6kZ8MBiJXap5Vsn9qEivkO6CNf4wCzGBdmD'
+token = ''
 databaseID = "f6cbd9e15885497e918a2b2a97b23bc8"
 headers = {
     "Authorization": "Bearer " + token,
